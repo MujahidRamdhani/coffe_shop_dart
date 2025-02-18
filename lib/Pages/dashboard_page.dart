@@ -35,28 +35,48 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-          height: 60,
+      body: menu[indexMenu]['fragment'] as Widget,
+      bottomNavigationBar: Padding(
+          // height: 60,
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(menu.length, (index) {
               Map item = menu[index];
               bool isActive = indexMenu == index;
-              return Column(
-                children: [
-                  ImageIcon(AssetImage(item[isActive? 'icon_active' : 'icon'],
+              return Expanded(
+                child: InkWell(
+                  onTap: () {
+                    indexMenu = index;
+                    setState(() {});
+                  },
+                  child: SizedBox(
+                    height: 70,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 16),
+                        ImageIcon(
+                          AssetImage(item[isActive? 'icon_active' : 'icon']
+                          ),
+                          size: 24,
+                          color: Color(isActive ? 0xffC67C4E : 0xffA2A2A2),
+                        ),
+                        if( isActive) const SizedBox(height: 6),
+                        if( isActive) 
+                          Container(
+                            height: 5,
+                            width: 10,
+                            decoration: BoxDecoration(
+                              color: const Color(0xffC67C4E),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                      ]
                     ),
                   ),
-                  if( isActive) const SizedBox(height: 6),
-                  if( isActive) 
-                    Container(
-                      height: 5,
-                      width: 10,
-                      decoration: BoxDecoration(
-                        color: const Color(0xffC67C4E),
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                    ),
-                ]
+                ),
               );
             }),
           )),
