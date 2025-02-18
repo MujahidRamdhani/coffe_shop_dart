@@ -8,12 +8,12 @@ class ButtonPrimary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Color(0xffC67C4E),
-      borderRadius: BorderRadius.circular(16),
-      child: InkWell(
-        onTap: onTap,
+        color: Color(0xffC67C4E),
         borderRadius: BorderRadius.circular(16),
-        child: SizedBox(
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: SizedBox(
             height: 56,
             width: double.infinity,
             child: Center(
@@ -24,10 +24,9 @@ class ButtonPrimary extends StatelessWidget {
                   fontSize: 16,
                   color: Colors.white,
                 ),
-                ),
+              ),
             ),
-        ),
-      )
-    );
+          ),
+        ));
   }
 }

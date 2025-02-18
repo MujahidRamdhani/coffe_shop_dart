@@ -240,6 +240,7 @@ class _HomeFragmentState extends State<HomeFragment> {
         return GestureDetector(
           onTap: () {
             Navigator.pushNamed(context, '/detail', arguments: coffee);
+            // print(coffee);
           },
           child: Container(
             padding: const EdgeInsets.fromLTRB(8, 8, 8, 12),
